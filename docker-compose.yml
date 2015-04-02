@@ -1,0 +1,10 @@
+nuxeo:
+  hostname: nuxeo-pp
+  domainname: ad.universite-lyon.fr
+  build: .
+  environment:
+    VIRTUAL_HOST: nuxeo.universite-lyon.fr
+    PACKAGES: "nuxeo-drive shibboleth-authentication nuxeo-diff nuxeo-virtualnavigation nuxeo-dam nuxeo-dam-compat nuxeo-spreadsheet nuxeo-template-rendering nuxeo-web-mobile"
+    TEMPLATES: "postgresql,drive,/platform/etc/data/conf/templates/shibboleth"
+  volumes:
+    - /data-pp:/platform/etc/data
