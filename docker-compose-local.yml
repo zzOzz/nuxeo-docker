@@ -1,12 +1,15 @@
 nuxeo:
+  image: nuxeodocker_nuxeo:6.0-HF09
   hostname: nuxeo-pp
   domainname: ad.universite-lyon.fr
-  build: .
+  #build: .
   environment:
     VIRTUAL_HOST: docker.local
-    PACKAGES: "nuxeo-drive shibboleth-authentication nuxeo-diff nuxeo-virtualnavigation nuxeo-dam nuxeo-dam-compat nuxeo-spreadsheet nuxeo-template-rendering nuxeo-web-mobile"
-    TEMPLATES: "drive"
-  volumes_from:
-    - nuxeo_data
+    PACKAGES: "nuxeo-drive shibboleth-authentication nuxeo-diff nuxeo-virtualnavigation nuxeo-dam nuxeo-dam-compat nuxeo-spreadsheet nuxeo-template-rendering nuxeo-web-mobile /platform/etc/data/marketplace/marketplace-CustomLoginUDL-1.0.2-SNAPSHOT.zip"
+    TEMPLATES: "default"
+  volumes:
+    - /Users/vincent/Documents/dev/java/nuxeo/etc_data:/platform/etc/data
+  #volumes_from:
+  #  - nuxeo_data
   ports:
     - 8080:8080
