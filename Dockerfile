@@ -20,7 +20,7 @@ RUN /bin/bash /root/nuxeo-update.sh
 
 # export NUXEO_CONF=/platform/etc/data/conf/nuxeo.conf
 ENV NUXEO_CONF /platform/etc/data/conf/nuxeo.conf
-VOLUME ["/platform/etc/data/"]
+VOLUME ["/platform/etc/data/","/var/lib/nuxeo/server/lib/log4j.xml"]
 
 
 #Ajout CA cert ActiveDirectory
