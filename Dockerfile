@@ -29,7 +29,7 @@ ADD ./CERT-CA.cer /etc/ssl/certs/java/CERT-CA.cer
 RUN (keytool -import -trustcacerts -alias ca-cert -file /etc/ssl/certs/java/CERT-CA.cer -keystore /etc/ssl/certs/java/cacerts -storepass changeit -noprompt)
 
 EXPOSE 8080
-CMD ["/root/start.sh"]
+CMD ["/bin/bash","/root/start.sh"]
 VOLUME ["/platform/etc/data/","/var/lib/nuxeo/server/lib/log4j.xml"]
 
 # Update/Upgrad all packages on each build
