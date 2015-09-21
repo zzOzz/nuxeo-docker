@@ -8,3 +8,4 @@ nuxeo:
     TEMPLATES: "postgresql,drive,/platform/etc/data/conf/templates/shibboleth"
   volumes:
     - /data-pp:/platform/etc/data
+    - /data-pp/conf/log4j.xml:/var/lib/nuxeo/server/lib/log4j.xml

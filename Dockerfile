@@ -20,7 +20,8 @@ RUN /bin/bash /root/nuxeo-update.sh
 
 # export NUXEO_CONF=/platform/etc/data/conf/nuxeo.conf
 ENV NUXEO_CONF /platform/etc/data/conf/nuxeo.conf
-VOLUME ["/platform/etc/data/","/var/lib/nuxeo/server/lib/log4j.xml"]
+RUN mv -f /var/lib/nuxeo/server/lib/log4j.xml /var/lib/nuxeo/server/lib/log4j.xml.orig
+#RUN touch /var/lib/nuxeo/server/lib/log4j.xml
 
 
 #Ajout CA cert ActiveDirectory
@@ -29,6 +30,7 @@ RUN (keytool -import -trustcacerts -alias ca-cert -file /etc/ssl/certs/java/CERT
 
 EXPOSE 8080
 CMD ["/root/start.sh"]
+VOLUME ["/platform/etc/data/","/var/lib/nuxeo/server/lib/log4j.xml"]
 
 # Update/Upgrad all packages on each build
 ONBUILD RUN apt-get update && apt-get upgrade -y
