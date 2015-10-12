@@ -1,15 +1,38 @@
 nuxeo:
-  image: nuxeodocker_nuxeo:6.0-HF09
+  image: nuxeodocker_nuxeo:7.4
   hostname: nuxeo-pp
   domainname: ad.universite-lyon.fr
   #build: .
   environment:
     VIRTUAL_HOST: docker.local
-    PACKAGES: "nuxeo-drive shibboleth-authentication nuxeo-diff nuxeo-virtualnavigation nuxeo-dam nuxeo-dam-compat nuxeo-spreadsheet nuxeo-template-rendering nuxeo-web-mobile /platform/etc/data/marketplace/marketplace-CustomLoginUDL-1.0.2-SNAPSHOT.zip"
-    TEMPLATES: "default"
+    PACKAGES: "nuxeo-drive shibboleth-authentication nuxeo-diff nuxeo-virtualnavigation nuxeo-dam nuxeo-spreadsheet nuxeo-template-rendering nuxeo-web-mobile nuxeo-shibboleth-invitation nuxeo-platform-user-registration"
+    PACKAGES2: "/platform/etc/data/marketplace/marketplace-CustomLoginUDL-1.0.9-SNAPSHOT.zip"
+    TEMPLATES: "default,/platform/etc/data/conf/templates/shibboleth"
   volumes:
-    - /Users/vincent/Documents/dev/java/nuxeo/etc_data:/platform/etc/data
+    - /Users/vincent/Documents/dev/java/nuxeo-udl/etc_data:/platform/etc/data
+    - /Users/vincent/Documents/dev/java/nuxeo-udl/etc_data/conf/log4j.xml:/var/lib/nuxeo/server/lib/log4j.xml:ro
   #volumes_from:
   #  - nuxeo_data
   ports:
     - 8080:8080
+shibbolethsp:
+  hostname: shib-pp
+  domainname: ad.universite-lyon.fr
+  image: nuxeoshibbolethdocker_shibbolethsp
+  environment:
+    VIRTUAL_HOST: nuxeo.universite-lyon.fr
+    VIRTUAL_PROTO: https
+  links:
+    - nuxeo
+  ports:
+    - "443"
+nginx:
+  environment:
+    DEFAULT_HOST: local.dev
+  ports:
+    - "80:80"
+    - "443:443"
+  volumes:
+    - /var/run/docker.sock:/tmp/docker.sock
+    - /Users/vincent/Documents/UDL/admin/wildcard_universite/:/etc/nginx/certs
+  image: jwilder/nginx-proxy

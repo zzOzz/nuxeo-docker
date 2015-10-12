@@ -5,7 +5,6 @@
 FROM       quay.io/nuxeoio/nuxeo-base
 MAINTAINER Vincent Lombard <vincent.lombard@universite-lyon.fr>
 
-
 # Copy scripts
 ADD nuxeo-install.sh /root/nuxeo-install.sh
 ADD nuxeo-update.sh /root/nuxeo-update.sh
