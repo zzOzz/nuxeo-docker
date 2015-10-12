@@ -21,7 +21,6 @@ fi
 # Start nuxeo
 su $NUXEO_USER -m -c "$NUXEOCTL --quiet start"
 #Where Am I
-curl -s http://172.17.42.1:2375/v1.17/info |tr "," "\n"|grep \"Name|head -1|cut -d ":" -f2
-echo var dockerhost=$(curl -s http://172.17.42.1:2375/v1.17/info |tr "," "\n"|grep \"Name|head -1|cut -d ":" -f2)\; >>/var/lib/nuxeo/server/nxserver/nuxeo.war/scripts/nxtimezone.js
+echo var dockerhost=$(curl -s http://172.17.42.1:2375/v1.17/info) ";">>/var/lib/nuxeo/server/nxserver/nuxeo.war/scripts/nxtimezone.js
 
 su $NUXEO_USER -m -c "tail -f /var/log/nuxeo/server.log"
