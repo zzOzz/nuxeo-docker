@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<component name="org.nuxeo.ecm.platform.your.authentication.chain.config">
+  <require>org.nuxeo.ecm.platform.ui.web.auth.WebEngineConfig</require>
+   <require>org.nuxeo.web.mobile.authenticator.contrib</require>
+  <extension target="org.nuxeo.ecm.platform.ui.web.auth.service.PluggableAuthenticationService"
+    point="chain">
+    <authenticationChain>
+      <plugins>
+        <plugin>BASIC_AUTH</plugin>
+        <plugin>TOKEN_AUTH</plugin>
+        <plugin>FORM_AUTH</plugin>
+        <plugin>SHIB_AUTH</plugin>
+        <plugin>WEBENGINE_FORM_AUTH</plugin>       
+        <plugin>ANONYMOUS_AUTH</plugin>
+        <plugin>WEBSERVICES_AUTH</plugin>
+      </plugins>
+    </authenticationChain>
+  </extension>
+</component>

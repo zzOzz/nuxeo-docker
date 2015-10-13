@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<component name="org.nuxeo.ecm.platform.login.shibboleth.config">
+<extension
+    target="org.nuxeo.ecm.platform.shibboleth.service.ShibbolethAuthenticationService"
+    point="config">
+    <config>
+      <uidHeaders>
+      	   <!-- <uidHeader idpUrl="${nuxeo.shib.idp-url}">principal</uidHeader> -->
+          <default>${nuxeo.shib.uidHeaders.default}</default>
+      </uidHeaders>
+
+      <loginURL>${nuxeo.shib.login.url}</loginURL>
+      <logoutURL>${nuxeo.shib.logout.url}</logoutURL>
+
+      <fieldMapping header="${nuxeo.shib.fieldMapping.username.key}">${nuxeo.shib.fieldMapping.username.value}</fieldMapping>
+      <fieldMapping header="${nuxeo.shib.fieldMapping.email.key}">${nuxeo.shib.fieldMapping.email.value}</fieldMapping>
+      <fieldMapping header="${nuxeo.shib.fieldMapping.firstName.key}">${nuxeo.shib.fieldMapping.firstName.value}</fieldMapping>
+      <fieldMapping header="${nuxeo.shib.fieldMapping.lastName.key}">${nuxeo.shib.fieldMapping.lastName.value}</fieldMapping>
+    </config>
+  </extension>
+</component>

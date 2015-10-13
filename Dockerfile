@@ -11,6 +11,7 @@ ADD nuxeo-update.sh /root/nuxeo-update.sh
 ADD start.sh /root/start.sh
 
 # Download & Install Nuxeo
+ENV NUXEO_VERSION nuxeo-7.4
 RUN /bin/bash /root/nuxeo-install.sh
 
 # Update Nuxeo
@@ -19,17 +20,22 @@ RUN /bin/bash /root/nuxeo-update.sh
 
 # export NUXEO_CONF=/platform/etc/data/conf/nuxeo.conf
 ENV NUXEO_CONF /platform/etc/data/conf/nuxeo.conf
-RUN mv -f /var/lib/nuxeo/server/lib/log4j.xml /var/lib/nuxeo/server/lib/log4j.xml.orig
+# RUN mv -f /var/lib/nuxeo/server/lib/log4j.xml /var/lib/nuxeo/server/lib/log4j.xml.orig
+ADD data /platform/etc/data/
+RUN chown -R nuxeo:nuxeo /platform/etc/data/conf/nuxeo.conf
+#RUN cp -f /platform/etc/data/conf/CERT-CA.cer /etc/ssl/certs/java/CERT-CA.cer
+#RUN cp -f /platform/etc/data/conf/log4j.xml /var/lib/nuxeo/server/lib/log4j.xml
+
+
+# RUN touch /etc/ssl/certs/java/CERT-CA.cer
+# RUN rm -f /etc/ssl/certs/java/CERT-CA.cer
 #RUN touch /var/lib/nuxeo/server/lib/log4j.xml
 
 
-#Ajout CA cert ActiveDirectory
-ADD ./CERT-CA.cer /etc/ssl/certs/java/CERT-CA.cer
-RUN (keytool -import -trustcacerts -alias ca-cert -file /etc/ssl/certs/java/CERT-CA.cer -keystore /etc/ssl/certs/java/cacerts -storepass changeit -noprompt)
-
 EXPOSE 8080
 CMD ["/bin/bash","/root/start.sh"]
-VOLUME ["/platform/etc/data/","/var/lib/nuxeo/server/lib/log4j.xml"]
+VOLUME ["/platform/etc/data/"]
+# VOLUME ["/platform/etc/data/","/var/lib/nuxeo/server/lib/log4j.xml"]
 
 # Update/Upgrad all packages on each build
 ONBUILD RUN apt-get update && apt-get upgrade -y

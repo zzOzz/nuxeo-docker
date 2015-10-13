@@ -1,3 +1,2 @@
-instance.clid
-CERT-CA.cer
-nuxeo.conf
+target/
+.DS_Store
