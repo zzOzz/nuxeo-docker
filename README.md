@@ -6,6 +6,7 @@ This repository holds the Dockerfile for nuxeo
 ## Configuration
 All nuxeo Configuration is stored in the data folder
 
+~~~
 data Folder structure:
 ├── binarystore
 ├── conf
@@ -22,6 +23,7 @@ data Folder structure:
 │                   └── shibboleth-config.xml
 └── marketplace
     └── marketplace-CustomLoginUDL-1.0.9-SNAPSHOT.zip
+~~~
 
 binarystore -> Data Storage (H2, elasticsearch)
 conf/CERT-CA.cer -> Certification Authority for ldaps authentication
@@ -37,22 +39,30 @@ You can create your own configuration folder and change theese lines with the co
 
 
 ## build
+
+~~~
 docker-compose build
+~~~
 
 ## run
+
+~~~
 docker-compose up
+~~~
 
 ## Custom Certificates
 
 You can use you own Certificates by uncommenting
 For SAML encrypyting Certificates.
-
+~~~
   volumes:
     - /Location_of_your_cert/sp-cert.pem:/etc/shibboleth/sp-cert.pem:ro
     - /Location_of_your_cert/sp-key.pem:/etc/shibboleth/sp-key.pem:ro
+~~~
 
 For HTTPS Certificates see (https://github.com/jwilder/nginx-proxy)
 
+~~~
   nginx:
     environment:
       DEFAULT_HOST: local.dev
@@ -63,3 +73,4 @@ For HTTPS Certificates see (https://github.com/jwilder/nginx-proxy)
       - /var/run/docker.sock:/tmp/docker.sock
       - /Location_of_your_cert/:/etc/nginx/certs
     image: jwilder/nginx-proxy
+~~~
