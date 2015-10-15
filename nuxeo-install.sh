@@ -30,11 +30,15 @@
 
 
 # Install java
-apt-get remove -y --purge openjdk-7-jdk
-add-apt-repository -y ppa:webupd8team/java && apt-get update
-echo "debconf shared/accepted-oracle-license-v1-1 select true" | debconf-set-selections
-echo "debconf shared/accepted-oracle-license-v1-1 seen true" | debconf-set-selections
-apt-get install -y oracle-java8-installer
+
+if [ ! "$NUXEO_VERSION" == "nuxeo-6.0" ]; then
+  echo "remove java 7 and install java 8"
+  apt-get remove -y --purge openjdk-7-jdk
+  add-apt-repository -y ppa:webupd8team/java && apt-get update
+  echo "debconf shared/accepted-oracle-license-v1-1 select true" | debconf-set-selections
+  echo "debconf shared/accepted-oracle-license-v1-1 seen true" | debconf-set-selections
+  apt-get install -y oracle-java8-installer
+fi
 
 # Nuxeo setup
 #wget -q "http://cdn.nuxeo.com/nuxeo-7.4/nuxeo-cap-7.4-tomcat.zip" -O /tmp/nuxeo-distribution-tomcat.zip

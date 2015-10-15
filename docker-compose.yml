@@ -3,8 +3,8 @@ nuxeo:
   build: .
   environment:
     VIRTUAL_HOST: docker.local
-    PACKAGES: "nuxeo-drive shibboleth-authentication nuxeo-diff nuxeo-virtualnavigation nuxeo-dam nuxeo-spreadsheet nuxeo-template-rendering nuxeo-web-mobile nuxeo-shibboleth-invitation nuxeo-platform-user-registration"
-    PACKAGES2: "/platform/etc/data/marketplace/marketplace-CustomLoginUDL-1.0.9-SNAPSHOT.zip"
+#    PACKAGES: "nuxeo-drive shibboleth-authentication nuxeo-diff nuxeo-virtualnavigation nuxeo-dam nuxeo-spreadsheet nuxeo-template-rendering nuxeo-web-mobile nuxeo-shibboleth-invitation nuxeo-platform-user-registration"
+#    PACKAGES2: "/platform/etc/data/marketplace/marketplace-CustomLoginUDL-1.0.9-SNAPSHOT.zip"
     TEMPLATES: "default,/platform/etc/data/conf/templates/shibboleth"
   # volumes:
   #   - /Users/vincent/Documents/dev/java/nuxeo-udl/etc_data:/platform/etc/data
