@@ -3,12 +3,12 @@ nuxeo:
   build: .
   environment:
     VIRTUAL_HOST: docker.local
-#    PACKAGES: "nuxeo-drive shibboleth-authentication nuxeo-diff nuxeo-virtualnavigation nuxeo-dam nuxeo-spreadsheet nuxeo-template-rendering nuxeo-web-mobile nuxeo-shibboleth-invitation nuxeo-platform-user-registration"
-#    PACKAGES2: "/platform/etc/data/marketplace/marketplace-CustomLoginUDL-1.0.9-SNAPSHOT.zip"
+    # PACKAGES: "nuxeo-drive shibboleth-authentication nuxeo-diff nuxeo-virtualnavigation nuxeo-dam nuxeo-spreadsheet nuxeo-template-rendering nuxeo-web-mobile nuxeo-shibboleth-invitation nuxeo-platform-user-registration"
+    # PACKAGES2: "/platform/etc/data/marketplace/marketplace-CustomLoginUDL-1.0.9-SNAPSHOT.zip"
     TEMPLATES: "default,/platform/etc/data/conf/templates/shibboleth"
-  # volumes:
-  #   - /Users/vincent/Documents/dev/java/nuxeo-udl/etc_data:/platform/etc/data
-  #   - /Users/vincent/Documents/dev/java/nuxeo-udl/etc_data/CERT-CA.cer:/tmp/CERT-CA.cer:ro
+  volumes:
+    - /Users/vincent/Documents/dev/java/nuxeo-udl/etc_data:/platform/etc/data
+    - /Users/vincent/Documents/dev/java/nuxeo-udl/etc_data/CERT-CA.cer:/tmp/CERT-CA.cer:ro
   ports:
     - 8080:8080
 shibbolethsp:
@@ -21,9 +21,9 @@ shibbolethsp:
     - nuxeo
   ports:
     - "443:443"
-  # volumes:
-  #   - /Users/vincent/Documents/dev/java/nuxeo-udl/etc_data/sp-cert.pem:/etc/shibboleth/sp-cert.pem:ro
-  #   - /Users/vincent/Documents/dev/java/nuxeo-udl/etc_data/sp-key.pem:/etc/shibboleth/sp-key.pem:ro
+#   volumes:
+#     - /Users/vincent/Documents/dev/java/nuxeo-udl/etc_data/sp-cert.pem:/etc/shibboleth/sp-cert.pem:ro
+#     - /Users/vincent/Documents/dev/java/nuxeo-udl/etc_data/sp-key.pem:/etc/shibboleth/sp-key.pem:ro
 # nginx:
 #   environment:
 #     DEFAULT_HOST: local.dev
