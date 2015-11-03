@@ -11,7 +11,7 @@ ADD nuxeo-update.sh /root/nuxeo-update.sh
 ADD start.sh /root/start.sh
 
 # Download & Install Nuxeo
-ENV NUXEO_VERSION nuxeo-6.0
+ENV NUXEO_VERSION nuxeo-7.4
 RUN /bin/bash /root/nuxeo-install.sh
 
 # Update Nuxeo
@@ -22,6 +22,8 @@ RUN /bin/bash /root/nuxeo-update.sh
 ENV NUXEO_CONF /platform/etc/data/conf/nuxeo.conf
 # RUN mv -f /var/lib/nuxeo/server/lib/log4j.xml /var/lib/nuxeo/server/lib/log4j.xml.orig
 ADD data /platform/etc/data/
+RUN chown nuxeo:nuxeo /platform/etc/data
+RUN chown nuxeo:nuxeo /platform/etc/data/conf
 RUN chown -R nuxeo:nuxeo /platform/etc/data/conf/nuxeo.conf
 #RUN cp -f /platform/etc/data/conf/CERT-CA.cer /etc/ssl/certs/java/CERT-CA.cer
 #RUN cp -f /platform/etc/data/conf/log4j.xml /var/lib/nuxeo/server/lib/log4j.xml
