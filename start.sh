@@ -23,6 +23,9 @@ if [ ! -z "$TEMPLATES" ]; then
   su $NUXEO_USER -m -c "sed -i'.backup' 's|\(^nuxeo.templates=\).*|\1$TEMPLATES|g' $NUXEO_CONF"
 fi
 
+#Set log4j.xml console.log file to log4j-console.xml (previously taken from nuxeo-launcher.jar)
+export LAUNCHER_DEBUG=" $LAUNCHER_DEBUG -Dlog4j.configuration=file:/platform/etc/data/conf/log4j-console.xml "
+
 # Start nuxeo
 su $NUXEO_USER -m -c "$NUXEOCTL --quiet start"
 #su $NUXEO_USER -m -c "$NUXEOCTL console"
