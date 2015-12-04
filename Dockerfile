@@ -11,7 +11,7 @@ ADD nuxeo-update.sh /root/nuxeo-update.sh
 ADD start.sh /root/start.sh
 
 # Download & Install Nuxeo
-ENV NUXEO_VERSION nuxeo-7.4
+ENV NUXEO_VERSION nuxeo-7.10
 RUN /bin/bash /root/nuxeo-install.sh
 
 # Update Nuxeo
