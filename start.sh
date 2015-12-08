@@ -23,6 +23,9 @@ if [ ! -z "$TEMPLATES" ]; then
   su $NUXEO_USER -m -c "sed -i'.backup' 's|\(^nuxeo.templates=\).*|\1$TEMPLATES|g' $NUXEO_CONF"
 fi
 
+# Clustering ID generated for nuxeo.conf
+echo "repository.clustering.id="$((16#$(cat /proc/self/cgroup | grep -o  -e "docker-.*.scope" | head -n 1 |cut -c 8-11))) >>  $NUXEO_CONF
+
 # Start nuxeo
 su $NUXEO_USER -m -c "$NUXEOCTL --quiet start"
 #su $NUXEO_USER -m -c "$NUXEOCTL console"
