@@ -28,9 +28,8 @@ j='';for i in {1..64}; do j="$j[[:xdigit:]]" ; done;/bin/cat /proc/self/cgroup |
 echo "repository.clustering.id="$(cat /tmp/container.id |head -c 16) >>  $NUXEO_CONF
 # Start nuxeo
 su $NUXEO_USER -m -c "$NUXEOCTL --quiet start"
-#su $NUXEO_USER -m -c "$NUXEOCTL console"
 #Where Am I
-#curl -s http://172.17.42.1:2375/v1.17/info |tr "," "\n"|grep \"Name|head -1|cut -d ":" -f2
-echo var dockerhost=$(curl -s http://172.17.42.1:2375/v1.17/info)";" >>/var/lib/nuxeo/server/nxserver/nuxeo.war/scripts/nxtimezone.js
-
+echo var dockerhost=$(curl -s http://172.17.42.1:2375/v1.17/info)";" >>/tmp/coreos.js
+echo "console.log(dockerhost);" >> /tmp/coreos.js
+bash /root/version.sh
 su $NUXEO_USER -m -c "tail -f /var/log/nuxeo/server.log"

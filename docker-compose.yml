@@ -7,6 +7,7 @@ nuxeo:
     PACKAGES2: "/platform/etc/data/marketplace/marketplace-CustomLoginUDL-1.0.9-SNAPSHOT.zip"
     TEMPLATES: "default,/platform/etc/data/conf/templates/shibboleth"
     LAUNCHER_DEBUG: "-Djvmcheck=nofail"
+    DOCKER_HOST: ${HOSTNAME}
   # volumes:
   #   - /Users/vincent/Documents/dev/java/nuxeo-udl/etc_data:/platform/etc/data
   #   - /Users/vincent/Documents/dev/java/nuxeo-udl/etc_data/CERT-CA.cer:/tmp/CERT-CA.cer:ro

@@ -25,6 +25,7 @@ ADD data /platform/etc/data/
 RUN chown nuxeo:nuxeo /platform/etc/data
 RUN chown nuxeo:nuxeo /platform/etc/data/conf
 RUN chown -R nuxeo:nuxeo /platform/etc/data/conf/nuxeo.conf
+ADD version.sh /root/version.sh
 #RUN cp -f /platform/etc/data/conf/CERT-CA.cer /etc/ssl/certs/java/CERT-CA.cer
 #RUN cp -f /platform/etc/data/conf/log4j.xml /var/lib/nuxeo/server/lib/log4j.xml
 
