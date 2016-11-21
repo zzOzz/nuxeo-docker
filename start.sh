@@ -24,8 +24,8 @@ if [ ! -z "$TEMPLATES" ]; then
 fi
 
 # Clustering ID generated for nuxeo.conf
-echo "repository.clustering.id="$((16#$(cat /proc/self/cgroup | grep -o  -e "docker-.*.scope" | head -n 1 |cut -c 8-11))) >>  $NUXEO_CONF
-
+j='';for i in {1..64}; do j="$j[[:xdigit:]]" ; done;/bin/cat /proc/self/cgroup |/usr/bin/head -n 1|/bin/sed 's/.*\('$j'\).*/\1/' >/tmp/container.id
+echo "repository.clustering.id="$(cat /tmp/container.id |head -c 16) >>  $NUXEO_CONF
 # Start nuxeo
 su $NUXEO_USER -m -c "$NUXEOCTL --quiet start"
 #su $NUXEO_USER -m -c "$NUXEOCTL console"
