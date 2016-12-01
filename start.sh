@@ -25,7 +25,7 @@ fi
 
 # Clustering ID generated for nuxeo.conf
 j='';for i in {1..64}; do j="$j[[:xdigit:]]" ; done;/bin/cat /proc/self/cgroup |/usr/bin/head -n 1|/bin/sed 's/.*\('$j'\).*/\1/' >/tmp/container.id
-echo "repository.clustering.id="$((16#$(cat /tmp/container.id |head -c 8))) >>  $NUXEO_CONF
+echo "repository.clustering.id="$((16#$(cat /tmp/container.id |head -c 4))) >>  $NUXEO_CONF
 # Start nuxeo
 su $NUXEO_USER -m -c "$NUXEOCTL --quiet start"
 #Where Am I

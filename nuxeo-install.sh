@@ -61,7 +61,6 @@ mkdir -p /var/run/nuxeo
 chown -R $NUXEO_USER:$NUXEO_USER /var/lib/nuxeo
 chown -R $NUXEO_USER:$NUXEO_USER /var/log/nuxeo
 chown -R $NUXEO_USER:$NUXEO_USER /var/run/nuxeo
-
 cat << EOF >> $NUXEO_HOME/bin/nuxeo.conf
 nuxeo.log.dir=/var/log/nuxeo
 nuxeo.pid.dir=/var/run/nuxeo

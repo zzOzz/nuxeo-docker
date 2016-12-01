@@ -41,5 +41,5 @@ VOLUME ["/platform/etc/data/"]
 # VOLUME ["/platform/etc/data/","/var/lib/nuxeo/server/lib/log4j.xml"]
 
 # Update/Upgrad all packages on each build
-ONBUILD RUN apt-get update && apt-get upgrade -y
+#ONBUILD RUN apt-get update && apt-get upgrade -y
 #docker run -i -t -v /data-pp/:/platform/etc/data nuxeoudlcontainer_nuxeo /bin/bash

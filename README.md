@@ -74,3 +74,9 @@ For HTTPS Certificates see (https://github.com/jwilder/nginx-proxy)
       - /Location_of_your_cert/:/etc/nginx/certs
     image: jwilder/nginx-proxy
 ~~~
+
+
+untrack instance.clid
+~~~
+git update-index --assume-unchanged instance.clid
+~~~
