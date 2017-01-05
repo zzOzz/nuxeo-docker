@@ -2,6 +2,9 @@
 
 # Update Nuxeo HF
 #su $NUXEO_USER -m -c "$NUXEOCTL mp-hotfix --relax=false --accept=true"
+#Copie nuxeo.conf
+[[ -e /platform/etc/data/conf/nuxeo.conf ]] && cp /platform/etc/data/conf/nuxeo.conf $NUXEO_CONF
+
 #Ajout CA cert ActiveDirectory
 (keytool -import -trustcacerts -alias ca-cert -file /platform/etc/data/conf/CERT-CA.cer -keystore /etc/ssl/certs/java/cacerts -storepass changeit -noprompt)
 

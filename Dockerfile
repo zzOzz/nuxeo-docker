@@ -19,7 +19,8 @@ ADD instance.clid /var/lib/nuxeo/data/instance.clid
 RUN /bin/bash /root/nuxeo-update.sh
 
 # export NUXEO_CONF=/platform/etc/data/conf/nuxeo.conf
-ENV NUXEO_CONF /platform/etc/data/conf/nuxeo.conf
+# ENV NUXEO_CONF /platform/etc/data/conf/nuxeo.conf
+ENV NUXEO_CONF /var/lib/nuxeo/conf/nuxeo.conf
 # RUN mv -f /var/lib/nuxeo/server/lib/log4j.xml /var/lib/nuxeo/server/lib/log4j.xml.orig
 ADD data /platform/etc/data/
 RUN chown nuxeo:nuxeo /platform/etc/data
