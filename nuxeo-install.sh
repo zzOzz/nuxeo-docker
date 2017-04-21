@@ -40,6 +40,12 @@ if [ ! "$NUXEO_VERSION" == "nuxeo-6.0" ]; then
   apt-get install -y oracle-java8-installer
 fi
 
+# Désinstalation version libre office de l'image Nuxeo + Installation libre-office v5
+apt-get remove -y --purge libreoffice
+add-apt-repository ppa:libreoffice/ppa && apt-get update
+apt-get install -y libreoffice
+
+
 # Nuxeo setup
 #wget -q "http://cdn.nuxeo.com/nuxeo-7.4/nuxeo-cap-7.4-tomcat.zip" -O /tmp/nuxeo-distribution-tomcat.zip
 echo "version: "$NUXEO_VERSION
